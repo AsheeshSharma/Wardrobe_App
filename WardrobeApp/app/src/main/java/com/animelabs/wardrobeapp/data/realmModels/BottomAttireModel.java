@@ -10,6 +10,8 @@ public class BottomAttireModel extends RealmObject {
     private String path;
     private String type;
 
+    public BottomAttireModel(){}
+
     public BottomAttireModel(String productId, String brandName, String createdAt, String likes, String path, String type) {
         this.productId = productId;
         this.brandName = brandName;

@@ -8,6 +8,7 @@ public class AttireModel {
     private String path;
     private String type;
 
+    public AttireModel(){}
     public AttireModel(String productId, String brandName, String createdAt, String likes, String path, String type) {
         this.productId = productId;
         this.brandName = brandName;

@@ -8,6 +8,8 @@ public class UserCollectionModel extends RealmObject{
     private String topWearId;
     private String bottomWearId;
 
+    public UserCollectionModel(){}
+
     public UserCollectionModel(String topWearPath, String bottomWearPath, String topWearId, String bottomWearId) {
         this.topWearPath = topWearPath;
         this.bottomWearPath = bottomWearPath;
