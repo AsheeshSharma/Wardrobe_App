@@ -18,11 +18,13 @@ import dagger.multibindings.IntoMap;
 
 @Module
 public abstract class DressSelectionFragmentModule {
-//    @Binds
-//    public abstract DressSelectionView getDressSelectionView(DressSelectionViewImpl dressSelectionView);
+    @Provides
+    static DressSelectionViewImpl getDressSelectionView(){
+        return new DressSelectionViewImpl();
+    }
 
     @Provides
-    static DressSelectionPresenter getPresenterInstance() {
+    static DressSelectionPresenterImpl getPresenterInstance() {
         return new DressSelectionPresenterImpl();
     }
 }

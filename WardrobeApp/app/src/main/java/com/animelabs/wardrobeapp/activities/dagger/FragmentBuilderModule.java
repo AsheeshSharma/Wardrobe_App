@@ -14,8 +14,8 @@ import dagger.multibindings.IntoMap;
 
 @Module
 public abstract class FragmentBuilderModule {
-    @Binds
-    @IntoMap
-    @FragmentKey(DressSelectionFragment.class)
-    abstract AndroidInjector.Factory<? extends Fragment> bindDressSelectionFragment(DressSelectionFragmentComponent.Builder builder);
+//    @Binds
+//    @IntoMap
+//    @FragmentKey(DressSelectionFragment.class)
+//    abstract AndroidInjector.Factory<? extends Fragment> bindDressSelectionFragment(DressSelectionFragmentComponent.Builder builder);
 }

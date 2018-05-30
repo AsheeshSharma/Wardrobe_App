@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 
 import com.animelabs.wardrobeapp.R;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter.DressSelectionPresenter;
+import com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter.DressSelectionPresenterImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelectionView;
+import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelectionViewImpl;
 
 import javax.inject.Inject;
 
@@ -22,9 +24,9 @@ import dagger.android.support.AndroidSupportInjection;
 public class DressSelectionFragment extends Fragment {
 
     @Inject
-    DressSelectionView dressSelectionView;
+    DressSelectionViewImpl dressSelectionView;
     @Inject
-    DressSelectionPresenter dressSelectionPresenter;
+    DressSelectionPresenterImpl dressSelectionPresenter;
 
     @Override
     public void onAttach(Context context) {
