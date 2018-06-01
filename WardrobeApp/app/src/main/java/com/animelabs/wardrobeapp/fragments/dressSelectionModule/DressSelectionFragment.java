@@ -34,10 +34,15 @@ public class DressSelectionFragment extends Fragment {
         super.onAttach(context);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dress_selection_layout, container, false);
+        return dressSelectionView.getView();
     }
 
     @Override

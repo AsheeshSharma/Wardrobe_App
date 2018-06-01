@@ -1,6 +1,7 @@
 package com.animelabs.wardrobeapp.fragments.dressSelectionModule.dagger;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.DressSelectionFragment;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.interactor.DressSelectionInteractorImpl;
@@ -19,8 +20,8 @@ import dagger.multibindings.IntoMap;
 @Module
 public abstract class DressSelectionFragmentModule {
     @Provides
-    static DressSelectionViewImpl getDressSelectionView(){
-        return new DressSelectionViewImpl();
+    static DressSelectionViewImpl getDressSelectionView(DressSelectionFragment dressSelectionFragment, int layoutId){
+        return new DressSelectionViewImpl(dressSelectionFragment, layoutId);
     }
 
     @Provides
