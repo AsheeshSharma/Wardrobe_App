@@ -8,6 +8,4 @@ public interface DressSelectionView {
     void uploadToCollection();
     void shuffleCollection();
     void viewCollection();
-    void init(Context context, int layoutId);
-    View getView();
 }
