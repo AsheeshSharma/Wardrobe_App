@@ -5,6 +5,8 @@ import android.view.View;
 
 public interface BaseFragmentView {
     void init(Context context, int layoutId);
+
     View getView();
-//  void initViews();
+
+    void initActions();
 }

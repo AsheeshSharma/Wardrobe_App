@@ -8,4 +8,6 @@ public interface DressSelectionView {
     void uploadToCollection();
     void shuffleCollection();
     void viewCollection();
+    void hideNoDataLayout();
+    void showNoDataLayout();
 }

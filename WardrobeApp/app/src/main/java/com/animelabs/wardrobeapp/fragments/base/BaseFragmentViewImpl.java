@@ -17,6 +17,7 @@ public class BaseFragmentViewImpl implements BaseFragmentView {
     protected Fragment fragmentInstance;
     public BaseFragmentViewImpl(Context context, int layoutId) {
         init(context, layoutId);
+        initActions();
     }
 
     @Override
@@ -32,6 +33,11 @@ public class BaseFragmentViewImpl implements BaseFragmentView {
     @Override
     public View getView() {
         return view;
+    }
+
+    @Override
+    public void initActions() {
+
     }
 
 }
