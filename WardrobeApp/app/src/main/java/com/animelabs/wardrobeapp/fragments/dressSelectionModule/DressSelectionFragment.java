@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.animelabs.wardrobeapp.R;
+import com.animelabs.wardrobeapp.data.RealmService;
+import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter.DressSelectionPresenter;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter.DressSelectionPresenterImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelectionView;
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
+import io.realm.RealmResults;
 
 public class DressSelectionFragment extends Fragment {
 
@@ -27,6 +30,8 @@ public class DressSelectionFragment extends Fragment {
     DressSelectionViewImpl dressSelectionView;
     @Inject
     DressSelectionPresenterImpl dressSelectionPresenter;
+    @Inject
+    RealmService realmService;
 
     @Override
     public void onAttach(Context context) {
@@ -50,5 +55,13 @@ public class DressSelectionFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         boolean isNull = dressSelectionView == null;
         Log.d("xxxxxxxxx", isNull + "");
+        boolean ifNull = realmService != null;
+        if(realmService != null) {
+            realmService.addAttireItem();
+//            RealmResults<TopAttireModel> realmResults = realmService.getTopAttires();
+//            TopAttireModel topAttireModel = realmResults.get(0);
+//            Log.d("xxxxxxxxxxxxprd", topAttireModel.getBrandName() + "");
+        }
+        Log.d("xxxxxxxxxxxxrea", ifNull + "");
     }
 }
