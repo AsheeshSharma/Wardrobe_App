@@ -1,8 +1,8 @@
 package com.animelabs.wardrobeapp.data;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
+import com.animelabs.wardrobeapp.data.realmModels.BottomAttireModel;
 import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
 
 import io.realm.Realm;
@@ -21,13 +21,11 @@ public class RealmService {
     }
 
 
-    //Refresh the realm instance
     public void refresh() {
         mRealm.refresh();
     }
 
-    //clear all objects from NotificationItem.class
-    public void clearAll() {
+    public void clearAllTopAttires() {
         mRealm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -36,10 +34,16 @@ public class RealmService {
         });
     }
 
-    public void addAttireItem() {
-        boolean isNUll = mRealm == null;
-        Log.d("xxxxxxxxxxxxREALM", isNUll + "");
+    public void clearAllBottomAttires() {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.delete(BottomAttireModel.class);
+            }
+        });
+    }
 
+    public void addTopAttireItem() {
         mRealm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(@NonNull Realm realm) {
@@ -48,19 +52,37 @@ public class RealmService {
         });
     }
 
-    //find all objects in the NotificationItem.class
+    public void addBottomAttireItem() {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(@NonNull Realm realm) {
+                realm.copyToRealm(new BottomAttireModel("1", "ABC", "01-01-2009", "20", "file://", "top"));
+            }
+        });
+    }
+
     public RealmResults<TopAttireModel> getTopAttires() {
         return mRealm.where(TopAttireModel.class).findAll();
     }
 
-    //query a single item with the given id
-    public TopAttireModel getAttire(String productId) {
+    public RealmResults<BottomAttireModel> getBottomAttires() {
+        return mRealm.where(BottomAttireModel.class).findAll();
+    }
+
+    public TopAttireModel getTopAttire(String productId) {
         return mRealm.where(TopAttireModel.class).equalTo("productId", productId).findFirst();
     }
 
-    //check if NotificationItem.class is empty
-    public boolean hasNotifications() {
+    public BottomAttireModel getBottomAttire(String productId) {
+        return mRealm.where(BottomAttireModel.class).equalTo("productId", productId).findFirst();
+    }
+
+    public boolean hasTopAttires() {
         return mRealm.where(TopAttireModel.class).findFirst() != null;
+    }
+
+    public boolean hasBottomAttires() {
+        return mRealm.where(BottomAttireModel.class).findFirst() != null;
     }
 
 }
