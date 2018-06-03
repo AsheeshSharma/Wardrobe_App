@@ -1,12 +1,18 @@
 package com.animelabs.wardrobeapp.fragments.dressSelectionModule.view;
 
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.animelabs.wardrobeapp.R;
+import com.animelabs.wardrobeapp.data.realmModels.BottomAttireModel;
+import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
 import com.animelabs.wardrobeapp.fragments.base.BaseFragmentViewImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.DressSelectionFragment;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -19,6 +25,8 @@ public class DressSelectionViewImpl extends BaseFragmentViewImpl implements Dres
     FloatingActionButton saveToCollection;
     @BindView(R.id.no_dresses_layout)
     View noDressesLayout;
+    @BindView(R.id.multiple_actions)
+    FloatingActionsMenu floatingActionsMenu;
 
     public DressSelectionViewImpl(DressSelectionFragment fragment, int layoutId) {
         super(fragment.getContext(), layoutId);
@@ -41,18 +49,27 @@ public class DressSelectionViewImpl extends BaseFragmentViewImpl implements Dres
     }
 
     @Override
-    public void viewCollection() {
+    public void viewTopCollection(ArrayList<TopAttireModel> topAttireModels) {
+        for (TopAttireModel topAttireModel : topAttireModels) {
+            Log.d("ATTIRE", topAttireModel.getBrandName() + "");
+        }
+    }
+
+    @Override
+    public void viewBottomCollection(ArrayList<BottomAttireModel> topAttireModels) {
 
     }
 
     @Override
     public void hideNoDataLayout() {
-        noDressesLayout.setVisibility(View.VISIBLE);
+        noDressesLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void showNoDataLayout() {
-        noDressesLayout.setVisibility(View.GONE);
+        noDressesLayout.setVisibility(View.VISIBLE);
+        floatingActionsMenu.setVisibility(View.GONE);
+        saveToCollection.setVisibility(View.GONE);
     }
 
     @Override

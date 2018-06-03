@@ -18,8 +18,8 @@ public abstract class DressSelectionFragmentModule {
     }
 
     @Provides
-    static DressSelectionPresenterImpl getPresenterInstance(DressSelectionInteractorImpl dressSelectionInteractor) {
-        return new DressSelectionPresenterImpl(dressSelectionInteractor);
+    static DressSelectionPresenterImpl getPresenterInstance(DressSelectionInteractorImpl dressSelectionInteractor, DressSelectionViewImpl dressSelectionView) {
+        return new DressSelectionPresenterImpl(dressSelectionInteractor, dressSelectionView);
     }
 
     @Provides

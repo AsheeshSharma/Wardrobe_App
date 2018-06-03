@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import com.animelabs.wardrobeapp.data.realmModels.BottomAttireModel;
 import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -56,13 +58,17 @@ public class RealmService {
         mRealm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(@NonNull Realm realm) {
-                realm.copyToRealm(new BottomAttireModel("1", "ABC", "01-01-2009", "20", "file://", "top"));
+                realm.copyToRealm(new BottomAttireModel("1", "ABC", "01-01-2009", "20", "file://", "bottom"));
             }
         });
     }
 
     public RealmResults<TopAttireModel> getTopAttires() {
         return mRealm.where(TopAttireModel.class).findAll();
+    }
+
+    public ArrayList<TopAttireModel> getTopAttiresList() {
+        return (ArrayList)mRealm.copyFromRealm(mRealm.where(TopAttireModel.class).findAll());
     }
 
     public RealmResults<BottomAttireModel> getBottomAttires() {
