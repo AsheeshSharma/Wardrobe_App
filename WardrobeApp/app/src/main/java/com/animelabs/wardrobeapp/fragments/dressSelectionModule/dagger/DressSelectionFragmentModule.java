@@ -1,6 +1,6 @@
 package com.animelabs.wardrobeapp.fragments.dressSelectionModule.dagger;
 
-import com.animelabs.wardrobeapp.data.dagger.RealmModule;
+import com.animelabs.wardrobeapp.data.RealmService;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.DressSelectionFragment;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.interactor.DressSelectionInteractorImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter.DressSelectionPresenterImpl;
@@ -8,8 +8,9 @@ import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelect
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
-@Module(includes = {RealmModule.class})
+@Module
 public abstract class DressSelectionFragmentModule {
     @Provides
     static DressSelectionViewImpl getDressSelectionView(DressSelectionFragment dressSelectionFragment, int layoutId) {
@@ -22,7 +23,12 @@ public abstract class DressSelectionFragmentModule {
     }
 
     @Provides
-    static DressSelectionInteractorImpl getDressSelectionInteractor() {
-        return new DressSelectionInteractorImpl();
+    static DressSelectionInteractorImpl getDressSelectionInteractor(RealmService realmService) {
+        return new DressSelectionInteractorImpl(realmService);
+    }
+
+    @Provides
+    static RealmService getRealmService(Realm realm){
+        return new RealmService(realm);
     }
 }

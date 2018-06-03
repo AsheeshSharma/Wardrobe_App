@@ -1,19 +1,12 @@
 package com.animelabs.wardrobeapp.data;
 
-import android.app.Activity;
-import android.app.Application;
-
-import io.realm.Realm;
-import io.realm.RealmResults;
-
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
 
-import javax.inject.Inject;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by a35764 on 6/3/2018.
@@ -21,11 +14,10 @@ import javax.inject.Inject;
  */
 
 public class RealmService {
-    @Inject
-    Realm mRealm;
+    private Realm mRealm;
 
-    public RealmService(Context context){
-
+    public RealmService(Realm mRealm) {
+        this.mRealm = mRealm;
     }
 
 
@@ -34,7 +26,7 @@ public class RealmService {
         mRealm.refresh();
     }
 
-   //clear all objects from NotificationItem.class
+    //clear all objects from NotificationItem.class
     public void clearAll() {
         mRealm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -45,15 +37,15 @@ public class RealmService {
     }
 
     public void addAttireItem() {
-            boolean isNUll = mRealm == null;
-            Log.d("xxxxxxxxxxxxREALM", isNUll + "");
+        boolean isNUll = mRealm == null;
+        Log.d("xxxxxxxxxxxxREALM", isNUll + "");
 
-//        mRealm.executeTransaction(new Realm.Transaction() {
-//            @Override
-//            public void execute(@NonNull Realm realm) {
-//                realm.copyToRealm(new TopAttireModel("1","ABC","01-01-2009","20","file://","top"));
-//            }
-//        });
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(@NonNull Realm realm) {
+                realm.copyToRealm(new TopAttireModel("1", "ABC", "01-01-2009", "20", "file://", "top"));
+            }
+        });
     }
 
     //find all objects in the NotificationItem.class

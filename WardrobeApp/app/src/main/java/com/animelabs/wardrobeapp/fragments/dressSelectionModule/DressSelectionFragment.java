@@ -30,8 +30,6 @@ public class DressSelectionFragment extends Fragment {
     DressSelectionViewImpl dressSelectionView;
     @Inject
     DressSelectionPresenterImpl dressSelectionPresenter;
-    @Inject
-    RealmService realmService;
 
     @Override
     public void onAttach(Context context) {
@@ -55,13 +53,5 @@ public class DressSelectionFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         boolean isNull = dressSelectionView == null;
         Log.d("xxxxxxxxx", isNull + "");
-        boolean ifNull = realmService != null;
-        if(realmService != null) {
-            realmService.addAttireItem();
-//            RealmResults<TopAttireModel> realmResults = realmService.getTopAttires();
-//            TopAttireModel topAttireModel = realmResults.get(0);
-//            Log.d("xxxxxxxxxxxxprd", topAttireModel.getBrandName() + "");
-        }
-        Log.d("xxxxxxxxxxxxrea", ifNull + "");
     }
 }
