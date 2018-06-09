@@ -2,6 +2,7 @@ package com.animelabs.wardrobeapp.fragments.base;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +18,16 @@ public class BaseFragmentViewImpl implements BaseFragmentView {
     protected Fragment fragmentInstance;
     public BaseFragmentViewImpl(Context context, int layoutId) {
         init(context, layoutId);
-        initActions();
+//        initActions();
     }
 
     @Override
     public void init(Context context, int layoutId) {
         if(context != null) {
+            Log.d("INSIDE", "BINDING");
             FrameLayout parent = new FrameLayout(context);
             parent.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            view = LayoutInflater.from(context).inflate(R.layout.dress_selection_layout, parent, true);
-            ButterKnife.bind(this, view);
+            view = LayoutInflater.from(context).inflate(layoutId, parent, true);
         }
     }
 

@@ -12,21 +12,25 @@ import io.realm.Realm;
 
 @Module
 public abstract class DressSelectionFragmentModule {
+    @PerFragment
     @Provides
     static DressSelectionViewImpl getDressSelectionView(DressSelectionFragment dressSelectionFragment, int layoutId) {
         return new DressSelectionViewImpl(dressSelectionFragment, layoutId);
     }
 
+    @PerFragment
     @Provides
     static DressSelectionPresenterImpl getPresenterInstance(DressSelectionInteractorImpl dressSelectionInteractor, DressSelectionViewImpl dressSelectionView) {
         return new DressSelectionPresenterImpl(dressSelectionInteractor, dressSelectionView);
     }
 
+    @PerFragment
     @Provides
     static DressSelectionInteractorImpl getDressSelectionInteractor(RealmService realmService) {
         return new DressSelectionInteractorImpl(realmService);
     }
 
+    @PerFragment
     @Provides
     static RealmService getRealmService(Realm realm){
         return new RealmService(realm);

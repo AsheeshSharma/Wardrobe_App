@@ -15,22 +15,30 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DressSelectionViewImpl extends BaseFragmentViewImpl implements DressSelectionView{
     @BindView(R.id.action_a)
     View addNewAttire;
+
     @BindView(R.id.action_b)
     View moveToCollection;
+
     @BindView(R.id.fab)
     FloatingActionButton saveToCollection;
+
     @BindView(R.id.no_dresses_layout)
     View noDressesLayout;
+
     @BindView(R.id.multiple_actions)
     FloatingActionsMenu floatingActionsMenu;
 
     public DressSelectionViewImpl(DressSelectionFragment fragment, int layoutId) {
         super(fragment.getContext(), layoutId);
         this.fragmentInstance = fragment;
+        ButterKnife.bind(this, view);
+        ButterKnife.setDebug(true);
+        initActions();
     }
 
     @Override
@@ -67,9 +75,9 @@ public class DressSelectionViewImpl extends BaseFragmentViewImpl implements Dres
 
     @Override
     public void showNoDataLayout() {
-        noDressesLayout.setVisibility(View.VISIBLE);
-        floatingActionsMenu.setVisibility(View.GONE);
-        saveToCollection.setVisibility(View.GONE);
+        this.noDressesLayout.setVisibility(View.VISIBLE);
+        this.floatingActionsMenu.setVisibility(View.GONE);
+        this.saveToCollection.setVisibility(View.GONE);
     }
 
     @Override
