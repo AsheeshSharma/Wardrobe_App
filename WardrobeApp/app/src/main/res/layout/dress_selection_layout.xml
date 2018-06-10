@@ -27,6 +27,7 @@
         <android.support.v4.view.ViewPager
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:id="@+id/topViewpager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
@@ -39,6 +40,7 @@
         <android.support.v4.view.ViewPager
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:id="@+id/bottomViewpager"
             app:layout_constraintBottom_toTopOf="@+id/horizontalGuideLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
@@ -71,7 +73,7 @@
             android:id="@+id/action_a"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/white_pressed"
-            app:fab_title="Action A"
+            app:fab_title="Add New Attire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -79,7 +81,15 @@
             android:id="@+id/action_b"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/white_pressed"
-            app:fab_title="Action B"
+            app:fab_title="Check Collections!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_c"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="@color/white_pressed"
+            app:fab_title="Shuffle Collection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

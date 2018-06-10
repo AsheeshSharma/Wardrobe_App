@@ -1,6 +1,9 @@
 package com.animelabs.wardrobeapp.models;
 
-public class AttireModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class AttireModel implements Parcelable, IAttireModel {
     private String productId;
     private String brandName;
     private String createdAt;
@@ -8,7 +11,9 @@ public class AttireModel {
     private String path;
     private String type;
 
-    public AttireModel(){}
+    public AttireModel() {
+    }
+
     public AttireModel(String productId, String brandName, String createdAt, String likes, String path, String type) {
         this.productId = productId;
         this.brandName = brandName;
@@ -65,4 +70,37 @@ public class AttireModel {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(productId);
+        parcel.writeString(brandName);
+        parcel.writeString(createdAt);
+        parcel.writeString(likes);
+        parcel.writeString(path);
+        parcel.writeString(type);
+    }
+
+    public static final Parcelable.Creator<AttireModel> CREATOR = new Parcelable.Creator<AttireModel>() {
+        @Override
+        public AttireModel createFromParcel(Parcel in) {
+            String productId = in.readString();
+            String brandName = in.readString();
+            String createdAt = in.readString();
+            String likes = in.readString();
+            String path = in.readString();
+            String type = in.readString();
+            return new AttireModel(productId,  brandName, createdAt, likes, path, type);
+        }
+
+        @Override
+        public AttireModel[] newArray(int size) {
+            return new AttireModel[size];
+        }
+    };
 }

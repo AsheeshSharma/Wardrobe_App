@@ -1,8 +1,6 @@
 package com.animelabs.wardrobeapp.fragments.dressSelectionModule.presenter;
 
-import android.annotation.SuppressLint;
-
-import com.animelabs.wardrobeapp.fragments.base.BaseFragmentPresenterImpl;
+import com.animelabs.wardrobeapp.fragments.base.basePresenter.BaseFragmentPresenterImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.interactor.DressSelectionInteractorImpl;
 import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelectionViewImpl;
 
@@ -24,19 +22,19 @@ public class DressSelectionPresenterImpl extends BaseFragmentPresenterImpl imple
 
 
     private void processData() {
-//        dressSelectionInteractor.setCollectionToView();
+        dressSelectionInteractor.setCollectionToView();
         compositeDisposable.add(dressSelectionInteractor.getTopAttireCollection()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .doOnNext(topAttireModels -> {
+                .filter(topAttireModels -> {
                     if(topAttireModels.size() < 1) {
                         dressSelectionView.showNoDataLayout();
                     }
+                    return topAttireModels.size() > 0;
                 })
-                .filter(topAttireModels -> topAttireModels.size() > 0)
                 .subscribe(topAttireList -> {
                     dressSelectionView.hideNoDataLayout();
-                    dressSelectionView.viewTopCollection(topAttireList);
+                    dressSelectionView.populateViewPager(topAttireList, 1);
                 }));
     }
 }

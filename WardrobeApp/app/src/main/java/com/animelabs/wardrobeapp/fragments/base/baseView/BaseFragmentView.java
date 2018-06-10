@@ -1,4 +1,4 @@
-package com.animelabs.wardrobeapp.fragments.base;
+package com.animelabs.wardrobeapp.fragments.base.baseView;
 
 import android.content.Context;
 import android.view.View;

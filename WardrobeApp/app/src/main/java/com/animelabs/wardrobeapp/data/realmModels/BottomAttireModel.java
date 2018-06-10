@@ -1,8 +1,13 @@
 package com.animelabs.wardrobeapp.data.realmModels;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.animelabs.wardrobeapp.models.IAttireModel;
+
 import io.realm.RealmObject;
 
-public class BottomAttireModel extends RealmObject {
+public class BottomAttireModel extends RealmObject implements IAttireModel, Parcelable {
     private String productId;
     private String brandName;
     private String createdAt;
@@ -20,6 +25,27 @@ public class BottomAttireModel extends RealmObject {
         this.path = path;
         this.type = type;
     }
+
+    protected BottomAttireModel(Parcel in) {
+        productId = in.readString();
+        brandName = in.readString();
+        createdAt = in.readString();
+        likes = in.readString();
+        path = in.readString();
+        type = in.readString();
+    }
+
+    public static final Creator<BottomAttireModel> CREATOR = new Creator<BottomAttireModel>() {
+        @Override
+        public BottomAttireModel createFromParcel(Parcel in) {
+            return new BottomAttireModel(in);
+        }
+
+        @Override
+        public BottomAttireModel[] newArray(int size) {
+            return new BottomAttireModel[size];
+        }
+    };
 
     public String getProductId() {
         return productId;
@@ -67,5 +93,20 @@ public class BottomAttireModel extends RealmObject {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(productId);
+        parcel.writeString(brandName);
+        parcel.writeString(createdAt);
+        parcel.writeString(likes);
+        parcel.writeString(path);
+        parcel.writeString(type);
     }
 }

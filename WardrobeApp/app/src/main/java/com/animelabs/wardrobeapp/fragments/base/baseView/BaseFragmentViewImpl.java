@@ -1,4 +1,4 @@
-package com.animelabs.wardrobeapp.fragments.base;
+package com.animelabs.wardrobeapp.fragments.base.baseView;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -7,11 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.animelabs.wardrobeapp.R;
-import com.animelabs.wardrobeapp.fragments.dressSelectionModule.view.DressSelectionView;
-
-import butterknife.ButterKnife;
 
 public class BaseFragmentViewImpl implements BaseFragmentView {
     protected View view;

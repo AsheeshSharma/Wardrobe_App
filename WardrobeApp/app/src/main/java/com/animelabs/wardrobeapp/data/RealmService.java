@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.animelabs.wardrobeapp.data.realmModels.BottomAttireModel;
 import com.animelabs.wardrobeapp.data.realmModels.TopAttireModel;
+import com.animelabs.wardrobeapp.models.IAttireModel;
 
 import java.util.ArrayList;
 
@@ -67,7 +68,7 @@ public class RealmService {
         return mRealm.where(TopAttireModel.class).findAll();
     }
 
-    public ArrayList<TopAttireModel> getTopAttiresList() {
+    public ArrayList<IAttireModel> getTopAttiresList() {
         return (ArrayList)mRealm.copyFromRealm(mRealm.where(TopAttireModel.class).findAll());
     }
 

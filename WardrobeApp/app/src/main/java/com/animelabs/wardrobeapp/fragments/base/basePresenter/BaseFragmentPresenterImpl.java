@@ -1,4 +1,4 @@
-package com.animelabs.wardrobeapp.fragments.base;
+package com.animelabs.wardrobeapp.fragments.base.basePresenter;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -14,5 +14,10 @@ public class BaseFragmentPresenterImpl implements BaseFragmentPresenter {
     @Override
     public void init() {
 
+    }
+
+    @Override
+    public void destroy() {
+        compositeDisposable.dispose();
     }
 }
